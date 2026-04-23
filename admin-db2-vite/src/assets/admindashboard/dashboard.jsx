@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  LayoutDashboard, Users, Scale, FileText, MessageSquare, 
+import {
+  LayoutDashboard, Users, Scale, FileText, MessageSquare,
   BarChart3, Settings, LogOut, Menu, Star, Bell,
   X, Send, Trash2, Eye, AlertCircle, CheckCircle, Calendar
 } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
-import './Dashboard.css';
+import './dashboard.css';
 
 const formatDateTimeForUi = (value) => {
   const parsed = value ? new Date(value) : null;
@@ -807,11 +807,14 @@ const Dashboard = () => {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
-    <div className="dashboard-container">
+    <div className="app-container">
       {/* Sidebar Section */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-logo">
-          <img src="/logo/logo.jpg" alt="BatasMo logo" className="brand-logo" />
+          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!isSidebarOpen)}>
+            <Menu size={24} />
+          </button>
+          {isSidebarOpen && <img src="/logo/logo.jpg" alt="BatasMo logo" className="brand-logo" />}
           {isSidebarOpen && <span className="logo-text">BatasMo</span>}
         </div>
 
@@ -846,23 +849,8 @@ const Dashboard = () => {
       </aside>
 
       {/* Main Content Section */}
-      <main className="main-panel">
-        <header className="top-bar">
-          <div className="bar-left">
-            <button className="menu-toggle" onClick={() => setSidebarOpen(!isSidebarOpen)}>
-              <Menu size={24} />
-            </button>
-            <h2 className="page-title">Dashboard</h2>
-          </div>
-          <div className="bar-right">
-            <div className="notification-icon">
-              <div className="red-dot"></div>
-              <Bell size={20} />
-            </div>
-          </div>
-        </header>
-
-        <div className="scroll-content">
+      <main className="main-content">
+        <div className="content-wrapper">
           {/* Welcome Section */}
           <section className="welcome-section">
             <div className="header-container">
@@ -891,10 +879,9 @@ const Dashboard = () => {
           {/* Stat Cards Grid */}
           <section className="stats-row">
             {stats.map((stat, i) => (
-              <div 
-                key={i} 
-                className="stat-card clickable-card" 
-                style={{ borderLeft: `4px solid ${stat.color}` }}
+              <div
+                key={i}
+                className="stat-card clickable-card"
                 onClick={() => setActiveModal(stat.modal)}
               >
                 <div className="stat-label">

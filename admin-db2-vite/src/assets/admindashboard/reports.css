@@ -15,14 +15,33 @@
   --ui-shadow-glow: 0 0 30px rgba(59, 130, 246, 0.6);
   --ui-text-primary: #f8fafc;
   --ui-text-secondary: #94a3b8;
+  --ui-gradient-primary: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%);
+  --ui-radius-md: 8px;
+  --ui-radius-lg: 16px;
+  --ui-shadow-medium: 0 0 20px rgba(0, 0, 0, 0.2);
+  --ui-shadow-strong: 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
-.export-all-btn { background: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: var(--ui-shadow-glow); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-.export-all-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+.content-wrapper { padding: 30px; overflow-y: auto; width: 100%; max-width: 1600px; margin: 0 auto; position: relative; z-index: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.sidebar.closed ~ .main-content .content-wrapper {
+  max-width: 1800px;
+}
+
+.sidebar.closed ~ .main-content .stats-grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.sidebar.closed ~ .main-content .bottom-grid {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.export-all-btn { background: var(--ui-gradient-primary); color: white; border: none; padding: 10px 20px; border-radius: var(--ui-radius-md); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: var(--ui-shadow-medium); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.export-all-btn:hover { transform: translateY(-2px); box-shadow: var(--ui-shadow-strong); }
 
 /* Stats Enhancements */
-.report-stat-card { background: var(--ui-bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--ui-glass-border); box-shadow: var(--ui-shadow-premium); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-.report-stat-card:hover { background: var(--ui-bg-card-hover); border-color: var(--ui-accent); box-shadow: var(--ui-shadow-glow); transform: translateY(-2px); }
+.report-stat-card { background: var(--ui-bg-card); padding: 20px; border-radius: var(--ui-radius-lg); border: 1px solid var(--ui-glass-border); box-shadow: var(--ui-shadow-medium); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.report-stat-card:hover { background: var(--ui-bg-card-hover); border-color: var(--ui-accent); box-shadow: var(--ui-shadow-strong); transform: translateY(-2px); }
 .stat-main { display: flex; justify-content: space-between; align-items: center; }
 .stat-value { font-size: 1.5rem; font-weight: 700; margin: 5px 0; color: var(--ui-text-primary); }
 .stat-label { color: var(--ui-text-secondary); font-size: 0.85rem; font-weight: 600; }
@@ -31,13 +50,13 @@
 .stat-icon-wrapper { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
 /* Chart Containers */
-.chart-container { background: var(--ui-bg-card); border-radius: 16px; border: 1px solid var(--ui-glass-border); padding: 20px; margin-bottom: 25px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.chart-container { background: var(--ui-bg-card); border-radius: 16px; border: 1px solid var(--ui-glass-border); padding: 20px; margin-bottom: 25px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: visible; }
 .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .chart-header h3 { font-size: 1rem; font-weight: 700; color: var(--ui-text-primary); }
 .chart-export { background: none; border: none; color: var(--ui-accent); font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: color 0.3s ease; }
 .chart-export:hover { color: var(--ui-accent-hover); }
 
-.chart-placeholder { background: var(--ui-glass-bg); border: 1px dashed var(--ui-glass-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; min-height: 250px; position: relative; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.chart-placeholder { background: var(--ui-glass-bg); border: 1px dashed var(--ui-glass-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; min-height: 250px; position: relative; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: visible; }
 
 .revenue-chart {
   min-height: 280px;
@@ -47,6 +66,7 @@
   background: var(--ui-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  overflow: visible;
 }
 
 .revenue-chart-svg {

@@ -30,8 +30,8 @@
   color: var(--ui-text-primary);
 }
 
-.settings-stack { display: flex; flex-direction: column; gap: 25px; }
-.card { background: var(--ui-bg-card); padding: 25px; border-radius: 16px; border: 1px solid var(--ui-glass-border); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.settings-stack { display: flex; flex-direction: column; gap: 25px; overflow: visible; }
+.card { background: var(--ui-bg-card); padding: 25px; border-radius: 16px; border: 1px solid var(--ui-glass-border); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow: visible; }
 .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--ui-text-primary); }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }

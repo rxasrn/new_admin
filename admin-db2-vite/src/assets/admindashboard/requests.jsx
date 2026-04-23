@@ -138,7 +138,10 @@ const Requests = () => {
       {/* SIDEBAR */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
-          <img src="/logo/logo.jpg" alt="BatasMo logo" className="brand-logo" />
+          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!isSidebarOpen)}>
+            <Menu size={24} />
+          </button>
+          {isSidebarOpen && <img src="/logo/logo.jpg" alt="BatasMo logo" className="brand-logo" />}
           {isSidebarOpen && <span className="logo-text">BatasMo</span>}
         </div>
 
@@ -174,21 +177,6 @@ const Requests = () => {
 
       {/* MAIN CONTENT */}
       <main className="main-content">
-        <header className="navbar">
-          <div className="navbar-left">
-            <button className="hamburger" onClick={() => setSidebarOpen(!isSidebarOpen)}>
-              <Menu size={24} />
-            </button>
-            <h1 className="nav-title">Requests</h1>
-          </div>
-          <div className="navbar-right">
-            <div className="bell-container">
-              <Bell size={20} />
-              <span className="dot"></span>
-            </div>
-          </div>
-        </header>
-
         <div className="content-wrapper">
           <div className="page-header">
             <div>
